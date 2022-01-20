@@ -1,0 +1,46 @@
+﻿<Application x:Class="Datalagring_Casehandler.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Datalagring_Casehandler"
+             xmlns:view="clr-namespace:Datalagring_Casehandler.Views"
+             xmlns:viewModel="clr-namespace:Datalagring_Casehandler.Models.ViewModels"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Templates/MenuItemTemplate.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            
+            <DataTemplate DataType="{x:Type viewModel:CasesViewModel}">
+                <view:CasesView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:CustomersViewModel}">
+                <view:CustomersView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:EditCaseViewModel}">
+                <view:EditCaseView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:HomepageViewModel}">
+                <view:HomepageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RegisterCaseViewModel}">
+                <view:RegisterCaseView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RegisterCustomerViewModel}">
+                <view:RegisterCustomerView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type viewModel:RegisterHandlerViewModel}">
+                <view:RegisterHandlerView/>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

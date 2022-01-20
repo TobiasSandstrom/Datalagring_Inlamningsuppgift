@@ -1,0 +1,47 @@
+﻿<UserControl x:Class="Datalagring_Casehandler.Views.RegisterCaseView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Datalagring_Casehandler.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Registrera nytt Ärende" FontSize="18" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Margin="20 10">
+                
+                <Label Content="Rubrik"/>
+                <TextBox x:Name="tbHeader" Padding="5" Margin="0 3 0 10"/>
+
+                <Label Content="Beskrivning"/>
+                <RichTextBox x:Name="tbDescription" Padding="5" Margin="0 3 0 10" Height="100"/>
+
+                <Label Content="Hanläggare"/>
+                <ComboBox x:Name="tbHandler" Padding="5" Margin="0 3 0 10"/>
+                <Label x:Name="lbManagerError" Content="Det finns inga handläggare registrerade i databasen" FontSize="10" Foreground="Red" HorizontalAlignment="center" Visibility="Collapsed"/>
+                
+                <Label Content="Status"/>
+                <ComboBox x:Name="tbStatus" Padding="5" Margin="0 3 0 10"/>
+                <Label x:Name="lbStatusError" Content="Det finns inga statusar registrerade i databasen" FontSize="10" Foreground="Red" HorizontalAlignment="center" Visibility="Collapsed"/>
+
+                <Label Content="Kund"/>
+                <ComboBox x:Name="tbCustomer" Padding="5" Margin="0 3 0 10"/>
+                <Label x:Name="lbCustomerError" Content="Det finns inga kunder registrerade i databasen" FontSize="10" Foreground="Red" HorizontalAlignment="center" Visibility="Collapsed"/>
+
+
+                <Button x:Name="BtnSubmit" FontSize="12" Content="Registrera Ärende" Padding="60 10" Margin="0 20 0 0" HorizontalAlignment="Center" Click="BtnSubmit_Click"/>
+                <Label x:Name="lbSuccess" Content="" Foreground="Green" HorizontalAlignment="center"/>
+                <Label x:Name="lbError" Content="" Foreground="Red" HorizontalAlignment="center"/>
+                
+                
+
+        </StackPanel>
+
+    </Grid>
+</UserControl>

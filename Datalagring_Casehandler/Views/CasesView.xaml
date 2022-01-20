@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Datalagring_Casehandler.Views.CasesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Datalagring_Casehandler.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Ärenden" FontSize="18"/>
+        
+        <StackPanel Grid.Row="1" Margin="10 20">
+            <Label x:Name="lbCases" Content="Välj vilket ärende ni vill se information om nedan:"/>
+            <ComboBox x:Name="cbCases"/>
+            <Label x:Name="lbCaseError" Content="Det finns inga ärenden registrerade i databasen" Foreground="Red" Visibility="Collapsed"/>
+            <Button x:Name="BtnSubmit" Content="Visa ärende" Width="200" Height="30" Margin="0 20 0 0" Click="BtnSubmit_Click"/>
+            
+            <Border Margin="10 20" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Margin="10">
+
+                    <TextBlock Text="{Binding Path=Header,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBlock Text="{Binding Path=Description}" Margin="20 0"/>
+
+                    <Label Content="Kundinformation:"/>
+                    <TextBlock Text="{Binding Path=CustomerNameSocial}" Margin="20 0"/>
+                    <TextBlock Text="{Binding Path=CustomerContact}" Margin="20 0"/>
+                    <TextBlock Text="{Binding Path=CustomerAddress}" Margin="20 0"/>
+
+                    <Label Content="Handläggare:"/>
+                    <TextBlock Text="{Binding Path=CaseHandler}" Margin="20 0"/>
+
+                    <Label Content="Ärende status:"/>
+                    <TextBlock Text="{Binding Path=CaseStatus}" Margin="20 0"/>
+
+                    <TextBlock Text="{Binding Path=DateCreated}" Margin="0 20 0 5"/>
+                    <TextBlock Text="{Binding Path=DateChanged}"/>
+
+
+                </StackPanel>
+            </Border>   
+        </StackPanel>
+            
+       
+
+
+
+
+    </Grid>
+
+    
+</UserControl>
