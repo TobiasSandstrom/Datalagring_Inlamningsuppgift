@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console_TestingGrounds", "Console_TestingGrounds\Console_TestingGrounds.csproj", "{F5E1C154-383D-42B3-99F5-E9F3A2AB8AE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datalagring_Casehandler", "Datalagring_Casehandler\Datalagring_Casehandler.csproj", "{8DB99F8B-DA42-4619-A126-877F59F8E4CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F5E1C154-383D-42B3-99F5-E9F3A2AB8AE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5E1C154-383D-42B3-99F5-E9F3A2AB8AE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5E1C154-383D-42B3-99F5-E9F3A2AB8AE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5E1C154-383D-42B3-99F5-E9F3A2AB8AE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB99F8B-DA42-4619-A126-877F59F8E4CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB99F8B-DA42-4619-A126-877F59F8E4CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB99F8B-DA42-4619-A126-877F59F8E4CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB99F8B-DA42-4619-A126-877F59F8E4CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {610A8DEF-7D82-4094-A087-85D96B310D4B}
+	EndGlobalSection
+EndGlobal
