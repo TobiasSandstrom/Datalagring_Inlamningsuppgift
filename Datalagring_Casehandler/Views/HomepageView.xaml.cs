@@ -17,7 +17,7 @@ using System.Windows.Shapes;
 
 namespace Datalagring_Casehandler.Views
 {
-   
+
     public partial class HomepageView : UserControl
     {
 
@@ -29,7 +29,7 @@ namespace Datalagring_Casehandler.Views
         public string NotStarted { get; set; } = null!;
         public string Ongoing { get; set; } = null!;
         public string Finished { get; set; } = null!;
-
+        
         public HomepageView()
         {
             InitializeComponent();
@@ -38,21 +38,14 @@ namespace Datalagring_Casehandler.Views
             Ongoing = $"Pågående: {_statusStatistics[1]}";
             Finished = $"Avslutade: {_statusStatistics[2]}";
 
-            cases = _caseService.GetLatestCases();
-            if (cases.Count() > 1)
+            var _cases = _caseService.GetAllCasesSorted();
+            lvLatestCases.Items.Clear();
+            foreach (var _case in _cases)
             {
-                ListLatestCases();
+                lvLatestCases.Items.Add(_case);
             }
 
             this.DataContext = this;
-        }
-       
-       
-
-        //Listar de 10 senaste ärendena i listview
-        public void ListLatestCases()
-        {
-            lbHeader.Content = $"1 {cases.First().CaseCreated.ToShortDateString()}{cases.Last().CaseCreated.ToShortDateString()}";
         }
 
     }

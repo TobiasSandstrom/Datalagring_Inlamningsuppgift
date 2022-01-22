@@ -30,6 +30,7 @@ namespace Datalagring_Casehandler.Views
             InitializeComponent();
         }
 
+        //Knappen för att registrera en ny handläggare
         private void BtnManagerSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (tbFirstName.Text != "" && tbLastName.Text != "")
@@ -58,7 +59,8 @@ namespace Datalagring_Casehandler.Views
             }
         }
         
-        
+        // Knappen för att lägga till en ny status
+        //Viktigt att 1 ska vara "Ej påbörjad", 2 "Pågående" och 3 "Avslutad"
         private void BtnStatusSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (tbStatus.Text != "")

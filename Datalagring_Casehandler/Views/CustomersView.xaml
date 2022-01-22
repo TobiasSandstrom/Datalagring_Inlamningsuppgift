@@ -7,6 +7,61 @@
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Kunder" FontSize="18"/>
+
+        <StackPanel Grid.Row="1" Margin="10 20">
+            <Label x:Name="lbCases" Content="Välj vilket kund ni vill se information om nedan:"/>
+            <ComboBox x:Name="cbCustomers"/>
+            <Label x:Name="lbCustomerError" Content="Det finns inga kunder registrerade i databasen" Foreground="Red" Visibility="Collapsed"/>
+            <Button x:Name="BtnSubmit" Content="Visa kund" Width="200" Height="30" Margin="0 20 0 0" Click="BtnSubmit_Click"/>
+
+            <Border Margin="10 20" BorderThickness="1" BorderBrush="Black">
+                <StackPanel Margin="10">
+
+                    <TextBlock Text="{Binding Path=Name,UpdateSourceTrigger=PropertyChanged}" FontSize="16" TextDecorations="Underline" FontWeight="Bold" Margin="0 0 0 5"/>
+
+                    <TextBlock Text="Namn:" FontSize="14" TextDecorations="Underline" FontWeight="Bold" Margin="0 0 0 5"/>
+
+
+                        <TextBlock Text="{Binding Path=FullName}" Margin="20 0 0 5"/>
+                        <TextBlock Text="{Binding Path=SocialSecurityNumber}" Margin="20 0 0 5"/>
+
+
+                    <TextBlock Text="Kontakt:" FontSize="14" TextDecorations="Underline" FontWeight="Bold" Margin="0 0 0 5"/>
+
+
+                    <TextBlock Text="{Binding Path=Email}" Margin="20 0 0 5"/>
+
+
+                    <TextBlock Text="{Binding Path=PhoneNumber}" Margin="20 0 0 5"/>
+
+                    <TextBlock Text="Adress:" FontSize="14" TextDecorations="Underline" FontWeight="Bold" Margin="0 5 0 5"/>
+                    <TextBlock Text="{Binding Path=Adress}" Margin="20 0"/>
+                    <TextBlock Text="{Binding Path=ZipcodeCity}" Margin="20 0"/>
+                    <TextBlock Text="{Binding Path=Country}" Margin="20 0"/>
+
+                    
+
+
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+
+
+
+
+
+    </Grid>
+
+
+
+    <!--<Grid>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,5 +76,5 @@
 
         </StackPanel>
 
-    </Grid>
+    </Grid>-->
 </UserControl>

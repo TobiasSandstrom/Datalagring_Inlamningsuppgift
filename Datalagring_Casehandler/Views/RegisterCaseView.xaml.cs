@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Datalagring_Casehandler.Views
 {
-    /// <summary>
-    /// Interaction logic for RegisterCaseView.xaml
-    /// </summary>
     public partial class RegisterCaseView : UserControl
     {
         CaseManager_Service _managerService = new();
@@ -65,14 +62,16 @@ namespace Datalagring_Casehandler.Views
             }
         }
 
+        //Knappen
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (tbHeader.Text != "" && tbDescription.ToString() != "" && tbHandler.SelectedValue != null && tbStatus.SelectedValue != null && tbCustomer.SelectedValue != null)
             {
+                string _description = ConvertRichTextBox(tbDescription);
                 CaseModel model = new()
                 {
                     Header = tbHeader.Text,
-                    Description = tbDescription.ToString(),
+                    Description = _description,
                     HandlerID = (int)tbHandler.SelectedValue,
                     StatusID = (int)tbStatus.SelectedValue,
                     CustomerID = (int)tbCustomer.SelectedValue
@@ -89,6 +88,17 @@ namespace Datalagring_Casehandler.Views
             }
         }
 
+        //Konverterar texten i en RichTextBox till en string
+        string ConvertRichTextBox(RichTextBox rtb)
+        {
+            TextRange textRange = new TextRange(
+                rtb.Document.ContentStart,
+                rtb.Document.ContentEnd
+            );
+            return textRange.Text;
+        }
+
+        //Fyller upp hanterarna i comboboxen
         private bool FillManager()
         {
             tbHandler.Items.Clear();
@@ -104,6 +114,8 @@ namespace Datalagring_Casehandler.Views
             return false;           
             
         }
+
+        //Fyller upp statusarna i comboboxen
         private bool FillStatus()
         {
             tbStatus.Items.Clear();
@@ -119,6 +131,8 @@ namespace Datalagring_Casehandler.Views
             return false;
 
         }
+
+        //Fyller upp kunderna i comboboxen
         private bool FillCustomer()
         {
             tbCustomer.Items.Clear();
@@ -134,6 +148,7 @@ namespace Datalagring_Casehandler.Views
             return false;
 
         }
+        
 
         private void Clear()
         {

@@ -12,6 +12,7 @@ namespace Datalagring_Casehandler.Services
     {
         private SqlContext _context = new SqlContext();
 
+        // Skapar en ny handläggare
         public bool Create(Casemanager manager)
         {
             var _manager = _context.Casemanagers.Where(x => x.FirstName == manager.FirstName && x.LastName == manager.LastName).FirstOrDefault();
@@ -25,6 +26,7 @@ namespace Datalagring_Casehandler.Services
             return false;
         }
 
+        //Hämtar alla handläggare från databasen
         public IEnumerable<Casemanager> ListAllManagers()
         {
             return _context.Casemanagers;

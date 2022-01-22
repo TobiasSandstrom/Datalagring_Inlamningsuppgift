@@ -22,20 +22,18 @@ namespace Datalagring_Casehandler.Views
 
     public partial class CasesView : UserControl, INotifyPropertyChanged
     {
-
-        public string Header { get; set; } = "bsgfjsfafja";
-        public string Description { get; set; }
-        public string CustomerNameSocial { get; set; }
-        public string CustomerContact { get; set; }
-        public string CustomerAddress { get; set; }
-        public string CaseHandler { get; set; }
-        public string CaseStatus { get; set; }
-        public string CaseCreated { get; set; }
-        public string CaseChanged { get; set; }
+        
 
         Case_Service _caseService = new();
-
         public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void Property_Changed(string prop)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            }
+        }
 
         public CasesView()
         {
@@ -58,6 +56,7 @@ namespace Datalagring_Casehandler.Views
             
         }
 
+        //Funktion som fyller upp comboboxen med kunderna
         private bool FillCases()
         {
             cbCases.Items.Clear();
@@ -71,9 +70,32 @@ namespace Datalagring_Casehandler.Views
 
             }
             return false;
-
         }
 
+        //Funktion som sätter variablernas värde till det av valet ifrån listan
+        public void SetCase(Case _case)
+        {
+            Header = _case.CaseHeader;
+            Description = _case.CaseDescription.ToString();
+            CustomerNameSocial = $"{_case.Customer.FirstName} {_case.Customer.LastName},  {_case.Customer.SocialSecurityNumber}";
+            CustomerAddress = $"{_case.Customer.Adress.StreetAdress}";
+            CustomerZipCodeCity = $"{_case.Customer.Adress.ZipCode}, {_case.Customer.Adress.City} " ;
+            CustomerCountry = $"{_case.Customer.Adress.Country}";
+            CustomerContact = $"{_case.Customer.Contact.Email},  {_case.Customer.Contact.PhoneNumber}";
+            CaseHandler = $"{_case.Manager.FirstName} {_case.Manager.LastName}";
+            CaseStatus = $"Ärende status : {_case.Status.Status}";
+            DateCreated = $"Skapad: {_case.CaseCreated.ToShortDateString()}";
+
+            DateTime _date = new DateTime();
+            if (_case.CaseLastChanged != null)
+            {
+                _date = _case.CaseLastChanged.Value;
+                DateChanged = $"Senast ändrad: {_date.ToShortDateString()}";
+            }
+        }
+
+
+        //Knappen
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             Case _case = new();
@@ -88,13 +110,13 @@ namespace Datalagring_Casehandler.Views
                     lbCaseError.Visibility = Visibility.Collapsed;
                     lbCaseError.Content = "";
                     SetCase(_case);
-                    this.DataContext = this;
+                    
                     
                 }
                 else
                 {
                     lbCaseError.Visibility = Visibility.Visible;
-                    lbCaseError.Content = "Ärendet har redan den statusen";
+                    lbCaseError.Content = "";
                 }
 
             }
@@ -105,20 +127,133 @@ namespace Datalagring_Casehandler.Views
                 lbCaseError.Visibility = Visibility.Visible;
             }
         }
-        public void SetCase(Case _case)
-        {
-            Header = _case.CaseHeader;
-            
-            Description = _case.CaseDescription;
-            CustomerNameSocial = $"{_case.Customer.FirstName} {_case.Customer.LastName}  ||  {_case.Customer.SocialSecurityNumber}";
-            CustomerAddress = $"{_case.Customer.Adress.StreetAdress} {_case.Customer.Adress.ZipCode} {_case.Customer.Adress.City}, {_case.Customer.Adress.Country}";
-            CustomerContact = $"{_case.Customer.Contact.Email}  ||  {_case.Customer.Contact.PhoneNumber}";
-            CaseHandler = $"{_case.Manager.FirstName} {_case.Manager.LastName}";
-            CaseStatus = $"Ärende status : {_case.Status.Status}";
-            CaseCreated = $"Skapad: {_case.CaseCreated}";
-            CaseChanged = $"Senast ändrad: {_case.CaseLastChanged}";
+        
 
+        //Variabler
+        #region
+        private string _Header;
+        public string Header
+        {
+            get { return _Header; }
+            set
+            {
+                _Header = value;
+                Property_Changed("Header");
+            }
         }
+
+        private string _Description;
+        public string Description
+        {
+            get { return _Description; }
+            set
+            {
+                _Description = value;
+                Property_Changed("Description");
+            }
+        }
+
+        private string _CustomerNameSocial;
+        public string CustomerNameSocial
+        {
+            get { return _CustomerNameSocial; }
+            set
+            {
+                _CustomerNameSocial = value;
+                Property_Changed("CustomerNameSocial");
+            }
+        }
+
+        private string _CustomerContact;
+        public string CustomerContact
+        {
+            get { return _CustomerContact; }
+            set
+            {
+                _CustomerContact = value;
+                Property_Changed("CustomerContact");
+            }
+        }
+
+        private string _CustomerAddress;
+        public string CustomerAddress
+        {
+            get { return _CustomerAddress; }
+            set
+            {
+                _CustomerAddress = value;
+                Property_Changed("CustomerAddress");
+            }
+        }
+
+        private string _CaseHandler;
+        public string CaseHandler
+        {
+            get { return _CaseHandler; }
+            set
+            {
+                _CaseHandler = value;
+                Property_Changed("CaseHandler");
+            }
+        }
+
+
+        private string _CaseStatus;
+        public string CaseStatus
+        {
+            get { return _CaseStatus; }
+            set
+            {
+                _CaseStatus = value;
+                Property_Changed("CaseStatus");
+            }
+        }
+
+
+        private string _DateCreated;
+        public string DateCreated
+        {
+            get { return _DateCreated; }
+            set
+            {
+                _DateCreated = value;
+                Property_Changed("DateCreated");
+            }
+        }
+
+        private string _DateChanged;
+        public string DateChanged
+        {
+            get { return _DateChanged; }
+            set
+            {
+                _DateChanged = value;
+                Property_Changed("DateChanged");
+            }
+        }
+
+        private string _CustomerCountry;
+        public string CustomerCountry
+        {
+            get { return _CustomerCountry; }
+            set
+            {
+                _CustomerCountry = value;
+                Property_Changed("CustomerCountry");
+            }
+        }
+
+        private string _CustomerZipCodeCity;
+        public string CustomerZipCodeCity
+        {
+            get { return _CustomerZipCodeCity; }
+            set
+            {
+                _CustomerZipCodeCity = value;
+                Property_Changed("CustomerZipCodeCity");
+            }
+        }
+        #endregion
     }
 }
 

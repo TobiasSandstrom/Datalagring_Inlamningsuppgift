@@ -80,20 +80,11 @@ namespace Datalagring_Casehandler.Services
         }
 
         //Hämtar de 10 senaste ärendena och sorterar dem nyast först
-        public IEnumerable<Case> GetLatestCases()
+        public IEnumerable<Case> GetAllCasesSorted()
         {
-            var cases = _context.Cases.Include(x => x.Manager)
-                .Include(x => x.Customer)
-                .ThenInclude(x => x.Adress)
-                .Include(x => x.Customer)
-                .ThenInclude(x => x.Contact)
-                .Include(x => x.Status);
-
-            var casesOrdered = cases.OrderByDescending(x => x.CaseCreated);
-            return casesOrdered;
+            var recentCases = _context.Cases.OrderByDescending(t => t.CaseCreated).Take(10);
+            return recentCases;
         }
-        
-
 
         //----------------------------------------------- < Status > -----------------------------------------------------------
 
@@ -134,6 +125,7 @@ namespace Datalagring_Casehandler.Services
 
             return false;
         }
+
 
         public int[] GetStatusStatistics()
         {

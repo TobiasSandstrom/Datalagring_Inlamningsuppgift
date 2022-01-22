@@ -18,9 +18,7 @@ using System.Windows.Shapes;
 
 namespace Datalagring_Casehandler.Views
 {
-    /// <summary>
-    /// Interaction logic for RegisterCustomerView.xaml
-    /// </summary>
+
     public partial class RegisterCustomerView : UserControl
     {
         Customer_Service _cs = new();
@@ -29,6 +27,7 @@ namespace Datalagring_Casehandler.Views
             InitializeComponent();
         }
 
+        // Knappen
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (tbFirstName.Text != "" && tbLastName.Text != "" && tbSocialSecurityNumber.Text != "" && tbPhoneNumber.Text != "" && tbEmail.Text != "" && tbStreetAddress.Text != "" && tbZipCode.Text != "" && tbCity.Text != "" && tbCountry.Text != "")

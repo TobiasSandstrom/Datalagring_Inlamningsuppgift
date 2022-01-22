@@ -48,6 +48,7 @@ namespace Datalagring_Casehandler.Views
             }
         }
 
+        //Knappen
         private void BtnSubmit_Click(object sender, RoutedEventArgs e)
         {
             if (tbCase.SelectedValue != null && tbStatus.SelectedValue != null)
@@ -73,7 +74,7 @@ namespace Datalagring_Casehandler.Views
             }
         }
 
-
+        //Fyller upp ärendena i comboboxen
         private bool FillCases()
         {
             tbCase.Items.Clear();
@@ -90,6 +91,7 @@ namespace Datalagring_Casehandler.Views
 
         }
 
+        //Fyller upp kunderna i comboboxen
         private bool FillStatus()
         {
             tbStatus.Items.Clear();
